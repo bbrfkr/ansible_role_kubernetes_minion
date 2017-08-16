@@ -24,7 +24,6 @@ This role executes the following settings.
 |----|---------|
 |CentOS|7|
 
-
 ## Role variables
 ```
 kubernetes_minion:
@@ -38,7 +37,7 @@ kubernetes_minion:
 ```
 
 ## Dependencies
-None
+- [bbrfkr.kubernetes_common](https://galaxy.ansible.com/bbrfkr/kubernetes_common/)
 
 ## Build status
 |branch|status|
