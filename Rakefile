@@ -23,7 +23,7 @@ end
 def copy_role_for_spec
   copy_dest = "spec/roles/bbrfkr.kubernetes_minion"
   if not Dir.exist?(copy_dest)
-    fileutils.mkdir_p(copy_dest)
+    FileUtils.mkdir_p(copy_dest)
   end
   delete_targets = Dir.glob(copy_dest + '/*')
   FileUtils.rm_rf(delete_targets)
