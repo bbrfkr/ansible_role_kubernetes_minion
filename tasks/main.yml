@@ -1,0 +1,35 @@
+---
+- name: put kubernetes common config
+  template:
+    src: config.j2
+    dest: /etc/kubernetes/config
+  become: yes
+  notify:
+    - restart kube-proxy
+    - restart kubelet
+
+- name: put kubelet config
+  template:
+    src: kubelet.j2
+    dest: /etc/kubernetes/kubelet
+  become: yes
+  notify: restart kubelet
+
+- name: put flanneld config
+  template:
+    src: flanneld.j2
+    dest: /etc/sysconfig/flanneld
+  become: yes
+  notify: restart flanneld
+
+- name: start and enable services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  become: yes
+  with_items:
+    - kube-proxy
+    - kubelet
+    - flanneld
+    - docker

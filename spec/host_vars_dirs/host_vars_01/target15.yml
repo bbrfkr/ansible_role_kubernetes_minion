@@ -1,0 +1,16 @@
+---
+kubernetes_common:
+  hosts:
+    - name: k8s-minion
+      ip: 192.168.1.115
+    - name: k8s-master
+      ip: 192.168.1.116
+
+kubernetes_minion:
+  hostname: k8s-minion
+  kubelet_port: 10250
+  allow_privileged: true
+  master:
+    hostname: k8s-master
+    api_port: 8080
+    etcd_mgmt_dir: /kube-centos/network
